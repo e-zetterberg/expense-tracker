@@ -13,6 +13,8 @@ public class Transaction {
 
     double amount;
 
+    String description;
+
     String category;
 
     public long getTransactionId() {

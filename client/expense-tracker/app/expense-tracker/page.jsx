@@ -1,8 +1,14 @@
 import React from 'react'
+import TransactionContainer from './TransactionContainer'
+import TransactionForm from './TransactionForm'
 
-const page = () => {
+const page = async () => {
   return (
-    <div>page</div>
+    <>
+        <main className='main'>
+            <TransactionContainer />
+        </main>
+    </>
   )
 }
 

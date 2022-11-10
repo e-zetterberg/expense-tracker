@@ -4,7 +4,7 @@ spring:
       enabled: always
   data:
     mongodb:
-      uri: mongodb://dbadmin:greatmindsthinkalike@localhost:27017/
+      uri: mongodb://dbadmin:greatmindsthinkalike@mongodb:27017/
       database: transactions
 server:
   port: 8080
