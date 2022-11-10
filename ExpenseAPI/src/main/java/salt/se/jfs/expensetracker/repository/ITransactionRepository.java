@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ITransactionRepository {
 
-    Transaction saveTransaction(long transactionId);
+    Transaction saveTransaction(Transaction transaction);
 
     List<Transaction> getAllTransactions();
 

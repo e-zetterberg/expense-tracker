@@ -13,12 +13,12 @@ public class TransactionRepository implements ITransactionRepository{
         this.repo = repo;
     }
 
-    public Transaction saveTransaction(long transactionId) {
-        return null;
+    public Transaction saveTransaction(Transaction transaction) {
+        return repo.save(transaction);
     }
 
     public List<Transaction> getAllTransactions() {
-        return null;
+        return repo.findAll();
     }
 
     public List<Transaction> getAllTransactionForDate(String date) {
@@ -26,15 +26,15 @@ public class TransactionRepository implements ITransactionRepository{
     }
 
     public Transaction getTransactionById(long transactionId) {
-        return null;
+        return repo.findById(transactionId).orElseThrow();
     }
 
     public void deleteTransaction(long transactionId) {
-
+        repo.deleteById(transactionId);
     }
 
     public void deleteTransaction(Transaction transaction) {
-
+        repo.delete(transaction);
     }
 
     public Transaction insertTransaction(Transaction transaction) {
