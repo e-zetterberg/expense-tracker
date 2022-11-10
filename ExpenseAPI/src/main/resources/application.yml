@@ -5,6 +5,6 @@ spring:
   data:
     mongodb:
       uri: mongodb://dbadmin:greatmindsthinkalike@localhost:27017/
-      database: todos
+      database: transactions
 server:
   port: 8080

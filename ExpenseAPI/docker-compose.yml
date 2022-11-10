@@ -9,4 +9,4 @@ services:
       - '27017:27017'
     volumes:
       - ./containerConfig/initMongo.js:/docker-entrypoint-initdb.d/initMongo.js
-      - ./data/mongdb:/data/db
+      - ./.data/mongdb:/data/db
