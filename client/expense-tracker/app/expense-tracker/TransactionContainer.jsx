@@ -5,13 +5,8 @@ import TransactionForm from "./TransactionForm";
 
 const API_URL = 'http://localhost:8080/api/transactions/'
 
-const TransactionContainer = () => {
-   const [transactions, setTransactions] = useState([]);
-   useEffect(() => {
-    fetch(API_URL)
-    .then(res => res.json())
-    .then(res => setTransactions(res));
-  }, []);
+const TransactionContainer = ({expenses}) => {
+   const [transactions, setTransactions] = useState(expenses);
 
   const handleDelete = async (transactionId) => {
     setTransactions(transactions.filter(t => t.transactionId !== transactionId));

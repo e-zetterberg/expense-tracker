@@ -1,5 +1,6 @@
 package salt.se.jfs.expensetracker.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import salt.se.jfs.expensetracker.model.Transaction;
@@ -45,8 +46,7 @@ public class Controller {
 
     @PatchMapping("/{transactionId}")
     ResponseEntity<Transaction> updateTransaction(@PathVariable long transactionId, String payload){
-        Transaction t = service.updateTransaction(transactionId, payload);
-        return ResponseEntity.ok(t);
+        return ResponseEntity.status(HttpStatus.I_AM_A_TEAPOT).build();
     }
 
     @DeleteMapping("/{transactionId}")
