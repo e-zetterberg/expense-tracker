@@ -32,7 +32,6 @@ const TransactionForm = ({ transactions, setTransactions }) => {
         },
         body: JSON.stringify(transaction),
       });
-      console.log(response.status);
       if (response.status !== 201) {
         return;
       }

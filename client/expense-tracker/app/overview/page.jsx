@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const page = () => {
-  return (
-    <main className="main">
-      <div>Total expenses</div>
-    </main>
-  );
-};
+const page = () => (
+  <main className="main">
+    <div>Total expenses</div>
+  </main>
+);
 
 export default page;

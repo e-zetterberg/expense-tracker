@@ -11,14 +11,11 @@ const TransactionContainer = ({ expenses }) => {
   const [transactions, setTransactions] = useState(expenses);
 
   const handleDelete = async (transactionId) => {
-    setTransactions(transactions.filter((t) => t.transactionId !== transactionId));
-    try {
-      const response = await fetch(`${API_URL}${transactionId}`, {
-        method: 'DELETE',
-      });
-      console.log(response.status);
-    } catch (error) {
-      console.log(error);
+    const response = await fetch(`${API_URL}${transactionId}`, {
+      method: 'DELETE',
+    });
+    if (response.status === 204) {
+      setTransactions(transactions.filter((t) => t.transactionId !== transactionId));
     }
   };
 
