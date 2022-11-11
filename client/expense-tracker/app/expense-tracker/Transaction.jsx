@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Transaction = ({
   id, date, amount, description, category, handleDelete,
@@ -13,7 +14,6 @@ const Transaction = ({
       </div>
       <div className="transaction--data">
         -
-        {' '}
         {amount}
         kr
       </div>
@@ -27,5 +27,14 @@ const Transaction = ({
     </div>
   </div>
 );
+
+Transaction.propTypes = {
+  id: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
+  amount: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  category: PropTypes.string.isRequired,
+};
 
 export default Transaction;

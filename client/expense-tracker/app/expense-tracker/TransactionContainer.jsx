@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Transaction from './Transaction';
 import TransactionForm from './TransactionForm';
 
@@ -38,6 +39,10 @@ const TransactionContainer = ({ expenses }) => {
       ))}
     </div>
   );
+};
+
+TransactionContainer.propTypes = {
+  expenses: PropTypes.arrayOf(Object).isRequired,
 };
 
 export default TransactionContainer;

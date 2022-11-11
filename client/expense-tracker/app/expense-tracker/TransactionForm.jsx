@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
+import PropTypes from 'prop-types';
 import 'react-datepicker/dist/react-datepicker.css';
 
 let nextId = 1;
@@ -53,7 +54,7 @@ const TransactionForm = ({ transactions, setTransactions }) => {
           <DatePicker
             className="datepicker"
             selected={date}
-            onChange={(date) => setDate(date)}
+            onChange={(d) => setDate(d)}
           />
           <input
             className="transaction-input"
@@ -79,8 +80,8 @@ const TransactionForm = ({ transactions, setTransactions }) => {
             id=""
           >
             <option value="">--Select a category--</option>
-            {categories.map((c, index) => (
-              <option key={index}>{c}</option>
+            {categories.map((c) => (
+              <option key={c.id}>{c}</option>
             ))}
           </select>
           <button className="btn btn--add" type="submit">
@@ -90,6 +91,11 @@ const TransactionForm = ({ transactions, setTransactions }) => {
       </form>
     </div>
   );
+};
+
+TransactionForm.propTypes = {
+  transactions: PropTypes.arrayOf(Object).isRequired,
+  setTransactions: PropTypes.func.isRequired,
 };
 
 export default TransactionForm;
