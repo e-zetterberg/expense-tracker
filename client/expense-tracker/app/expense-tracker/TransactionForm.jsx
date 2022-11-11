@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+
 'use client';
 
 import React, { useState } from 'react';
@@ -79,8 +81,8 @@ const TransactionForm = ({ transactions, setTransactions }) => {
             id=""
           >
             <option value="">--Select a category--</option>
-            {categories.map((c) => (
-              <option key={c.id}>{c}</option>
+            {categories.map((c, index) => (
+              <option key={index}>{c}</option>
             ))}
           </select>
           <button className="btn btn--add" type="submit">

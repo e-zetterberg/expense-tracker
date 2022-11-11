@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Transaction from './Transaction';
 import TransactionForm from './TransactionForm';
+import CategoryBar from './CategoryBar';
 
 const API_URL = 'http://localhost:8080/api/transactions/';
 
@@ -19,10 +20,15 @@ const TransactionContainer = ({ expenses }) => {
     }
   };
 
+  const sortByCategory = (c) => {
+    setTransactions([].concat(transactions)
+      .sort((a, b) => (a[c] > b[c] ? 1 : -1)));
+  };
+
   return (
     <div className="TransactionContainer">
       <TransactionForm transactions={transactions} setTransactions={setTransactions} />
-      <div />
+      <CategoryBar sortByCategory={sortByCategory} />
       {transactions.map((t) => (
         <Transaction
           key={t.transactionId}

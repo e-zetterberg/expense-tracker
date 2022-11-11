@@ -18,6 +18,19 @@
   margin-left: 5px;
 }
 
+.field-buttons {
+  border: 1px black solid;
+  border-radius: 5px;
+  padding: 1px;
+  align-content: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr 50px;
+  text-align: center;
+  height: 30px;
+  gap: 50px;
+  margin: 1px 0;
+}
+
 .header--navbar-container{
     height: 100%;
     display: flex;
@@ -85,7 +98,7 @@
   .form--input-container {
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 100px 2fr 2fr 1fr 50px;
+    grid-template-columns: 1fr 1px 2fr 2fr 1fr 50px;
   }
 
   .transaction-input {
