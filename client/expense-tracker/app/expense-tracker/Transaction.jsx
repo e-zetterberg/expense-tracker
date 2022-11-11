@@ -1,27 +1,31 @@
 'use client';
-import React from 'react'
 
-const Transaction = ({id, date, amount, description, category, handleDelete}) => {
-  return (
-    <div >
-    <div className='transaction'>
+import React from 'react';
 
-        <div>
-            {date}
-        </div>
-        <div>
-            - {amount}kr
-        </div>
-        <div>
-          {description}
-        </div>
-        <div>
-            {category}
-        </div>
-        <button onClick={() => handleDelete(id)}>X</button>
+const Transaction = ({
+  id, date, amount, description, category, handleDelete,
+}) => (
+  <div>
+    <div className="transaction">
+
+      <div className="transaction--data">
+        {date}
+      </div>
+      <div className="transaction--data">
+        -
+        {' '}
+        {amount}
+        kr
+      </div>
+      <div className="transaction--data">
+        {description}
+      </div>
+      <div className="transaction--data">
+        {category}
+      </div>
+      <button type="button" className="btn btn--remove" onClick={() => handleDelete(id)}>X</button>
     </div>
-    </div>
-  )
-}
+  </div>
+);
 
-export default Transaction
+export default Transaction;

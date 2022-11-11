@@ -17,6 +17,15 @@ public class Transaction {
 
     String category;
 
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public long getTransactionId() {
         return transactionId;
     }

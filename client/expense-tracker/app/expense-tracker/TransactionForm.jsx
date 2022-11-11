@@ -1,20 +1,19 @@
-"use client";
-import React, { useState } from "react";
-import DatePicker from "react-datepicker"
-import "react-datepicker/dist/react-datepicker.css";
+'use client';
+
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 let nextId = 1;
 const TransactionForm = ({ transactions, setTransactions }) => {
   const [date, setDate] = useState(new Date());
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState('');
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     const transaction = {
       transactionId: nextId,
       date: date.toLocaleDateString(),
@@ -22,28 +21,38 @@ const TransactionForm = ({ transactions, setTransactions }) => {
       description,
       category,
     };
-    
-    setTransactions(transactions.concat(transaction));
-    setAmount("");
-    setDescription("");
-    const response = fetch("http://localhost:8080/api/transactions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(transaction),
-    });
-    console.log(JSON.stringify(transaction));
+
     nextId += 1;
+    try {
+      const response = await fetch('http://localhost:8080/api/transactions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(transaction),
+      });
+      console.log(response.status);
+      if (response.status !== 201) {
+        return;
+      }
+    } catch (error) {
+      return;
+    }
+    setTransactions(transactions.concat(transaction));
+
+    setAmount('');
+    setDescription('');
   };
-  
-  const categories = ["food", "health", "transportation", "shopping", "travel", "utilities", "subscriptions", "other"];
+
+  const categories = ['food', 'health', 'transportation', 'shopping', 'travel', 'utilities', 'subscriptions', 'other'];
+
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
         <div className="form--input-container">
-          <DatePicker 
-            selected={date} 
+          <DatePicker
+            className="datepicker"
+            selected={date}
             onChange={(date) => setDate(date)}
           />
           <input
@@ -52,7 +61,7 @@ const TransactionForm = ({ transactions, setTransactions }) => {
             id="transaction-input-amount"
             type="number"
             value={amount}
-            required={true}
+            required
             onChange={(e) => setAmount(e.target.value)}
           />
           <input
@@ -63,11 +72,12 @@ const TransactionForm = ({ transactions, setTransactions }) => {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
-          <select 
-            className="category-select" 
-            required={true}
+          <select
+            className="transaction-input category-select"
+            required
             onChange={(e) => setCategory(e.target.value)}
-            id="">
+            id=""
+          >
             <option value="">--Select a category--</option>
             {categories.map((c, index) => (
               <option key={index}>{c}</option>

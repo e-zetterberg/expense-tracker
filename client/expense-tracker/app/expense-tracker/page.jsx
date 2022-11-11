@@ -5,7 +5,7 @@ import TransactionForm from './TransactionForm'
 
 const getExpenseData = async () => {
   const API_URL = 'http://localhost:8080/api/transactions/';
-  const res = await fetch(API_URL);
+  const res = await fetch(API_URL, { cache: 'no-store' });
   return res.json();
 
 }
